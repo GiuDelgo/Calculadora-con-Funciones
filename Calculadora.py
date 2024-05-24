@@ -36,20 +36,21 @@ def validar_operacion (operation: str)->str:
         operation = input("Error, vuelva a ingresar una operación: ")
     return operation.lower()
 
-def validar_operando (operando: int)->int:
-    """valida los operandos ingresados
+def validar_operando(operando: str) -> int:
+    """Valida que el operando ingresado sea un número
 
     Args:
-        operando (int): operando 
+        operando (str): Operando ingresado como cadena
 
     Returns:
-        int: operando validado
+        int: Operando validado como entero
     """
-    while not(operando.isdigit()): 
-        operando = input("Ingrese A: ")
-    operando = int(operando)
-
-    return operando
+    while True:
+        try:
+            operando = int(operando)
+            return operando
+        except ValueError:
+            operando = input("Ingrese un operando válido: ")
 
 def menu_opciones (a: int, b: int) ->int:
     """Menu de opciones de la calculadora.
@@ -188,8 +189,8 @@ while True:
 
     match menu_opciones(a,b): 
         case 1: 
-            a = input("Ingrese A: ")
-            a = validar_operando(a)
+                a = input("Ingrese A: ")
+                a = validar_operando(a)
         case 2: 
             b = input("Ingrese B: ")
             b = validar_operando(b)
@@ -214,7 +215,12 @@ while True:
                             else: 
                                 division = funcion_division (a,b)                         
                         case "e":
-                            factorial = funcion_factorial (a)
+                            if a < 0:
+                                print("No se puede hacer la operción factorial con valores negativos")
+                                pausar()
+                                continue
+                            else:
+                                factorial = funcion_factorial (a)
                     print ("Operacion realizada")
                     break
         case 4: 
