@@ -183,7 +183,7 @@ resta = 0
 producto = 0
 division = 0
 factorial = 0
-operacion = " "
+operacion = 0
 
 while True:
 
@@ -238,7 +238,7 @@ while True:
                 producto = 0
                 division = 0
                 factorial = 0
-                operacion = " "
+                operacion = 0
         case 5: 
             if salir ():
                 break
